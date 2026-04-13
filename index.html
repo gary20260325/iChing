@@ -701,7 +701,7 @@ html.theme-dark .particle{
   0%{opacity:0}15%{opacity:1}100%{opacity:0}
 }
 .flip-card{
-  width:220px;height:320px;
+  width:220px;height:380px;
   position:relative;z-index:60;
   cursor:pointer;touch-action:manipulation;
   -webkit-user-select:none;user-select:none;
@@ -773,45 +773,48 @@ html.theme-dark .particle{
   border:2px solid rgba(212,175,55,0.6);
   display:flex;flex-direction:column;
   align-items:center;justify-content:center;
-  gap:12px;
-  padding:24px 20px;
+  gap:6px;
+  padding:16px 16px;
   box-shadow:0 0 60px rgba(212,175,55,0.3),0 0 120px rgba(212,175,55,0.1);
 }
 .flip-front-name{
-  font-size:3rem;font-weight:700;
+  font-size:2.6rem;font-weight:700;
   color:#d4af37;
   letter-spacing:0.15em;
   font-family:"Noto Serif SC",serif;
   text-shadow:0 0 20px rgba(212,175,55,0.4);
 }
 .flip-front-fullname{
-  font-size:0.9rem;color:rgba(212,175,55,0.6);
+  font-size:0.8rem;color:rgba(212,175,55,0.6);
   letter-spacing:0.1em;
 }
 .flip-front-badge{
   display:inline-block;
-  padding:6px 24px;border-radius:50px;
-  font-size:1rem;font-weight:700;
+  padding:4px 20px;border-radius:50px;
+  font-size:0.9rem;font-weight:700;
   letter-spacing:0.15em;
-  margin-top:8px;
+  margin-top:4px;
   color:#d4af37;
   border:1px solid rgba(212,175,55,0.3);
   background:rgba(212,175,55,0.1);
 }
 .flip-front-judgment{
-  font-size:0.85rem;color:rgba(255,255,255,0.7);
+  font-size:0.75rem;color:rgba(255,255,255,0.7);
   text-align:center;
-  line-height:1.8;
+  line-height:1.6;
   max-width:180px;
-  margin-top:8px;
+  margin-top:2px;
 }
 .flip-front-lines{
-  display:flex;flex-direction:column;align-items:center;gap:4px;
-  margin-bottom:8px;
-  font-size:1.1rem;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  margin-bottom:4px;
+  font-size:1rem;
   letter-spacing:0.15em;
   color:#d4af37;
   text-shadow:0 0 8px rgba(212,175,55,0.3);
+  max-height:80px;
+  overflow:hidden;
+  flex-shrink:0;
 }
 /* Card flip text */
 .flip-text{
@@ -939,6 +942,96 @@ html.theme-dark .particle{
 }
 .hex-line.yin::before{left:0}
 .hex-line.yin::after{right:0}
+
+/* Moving lines */
+.hex-line.moving{
+  position:relative;
+}
+.moving-indicator{
+  position:absolute;
+  right:-24px;top:50%;
+  transform:translateY(-50%);
+  font-size:0.7rem;
+  color:var(--accent);
+  opacity:0.7;
+  line-height:1;
+}
+@media(min-width:768px){
+  .moving-indicator{right:-30px;font-size:0.8rem}
+}
+/* Changed hexagram card */
+.changed-hex-card{
+  text-align:center;
+  border:1px dashed var(--surface-border);
+  background:var(--surface);
+}
+.changed-hex-header{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  margin-bottom:16px;
+}
+.changed-hex-arrow{
+  font-size:1.2rem;color:var(--accent);
+  animation:arrowPulse 1.5s ease-in-out infinite;
+}
+@keyframes arrowPulse{
+  0%,100%{opacity:0.5;transform:translateX(0)}
+  50%{opacity:1;transform:translateX(4px)}
+}
+.changed-hex-label{
+  font-size:0.85rem;
+  color:var(--text-secondary);
+  letter-spacing:0.1em;
+}
+.changed-hex-body .hexagram-display{
+  opacity:0.7;
+}
+.changed-hex-body .hexagram-name{
+  font-size:1.8rem;
+}
+.changed-hex-body .hexagram-fullname{
+  font-size:0.8rem;
+}
+.changed-hex-body .fortune-badge{
+  font-size:0.8rem;
+  padding:4px 16px;
+}
+/* Moving lines interpretation */
+.moving-lines-list{
+  display:flex;flex-direction:column;gap:12px;
+}
+.moving-line-item{
+  display:flex;flex-direction:column;gap:2px;
+  padding:10px 14px;
+  background:var(--accent-subtle);
+  border-radius:10px;
+  border-left:3px solid var(--accent);
+}
+.moving-line-pos{
+  font-size:0.75rem;
+  color:var(--accent);
+  font-weight:600;
+  letter-spacing:0.05em;
+}
+.moving-line-text{
+  font-size:0.85rem;
+  color:var(--text-primary);
+  line-height:1.6;
+}
+/* Combined reading */
+.combined-reading{
+  border:1px solid var(--accent);
+  background:var(--accent-subtle);
+}
+.combined-text{
+  display:flex;flex-direction:column;gap:8px;
+}
+.combined-from,.combined-to{
+  font-size:0.85rem;
+  color:var(--text-primary);
+  line-height:1.6;
+}
+.combined-from{opacity:0.8}
+.combined-to{opacity:0.9;font-weight:500}
 
 .hexagram-name{
   font-size:2.8rem;font-weight:700;
@@ -1972,7 +2065,14 @@ var LANG = {
     catHeaven: '天', catEarth: '地', catWater: '水', catMountain: '山',
     catWind: '风', catThunder: '雷', catFire: '火', catLake: '泽',
     dailySeedDesc: '日期种子',
-    questionSeedDesc: '日期+问题种子'
+    questionSeedDesc: '日期+问题种子',
+    changedHexLabel: '变 卦',
+    movingLinesLabel: '动爻解析',
+    combinedReading: '三卦合断',
+    combinedFrom: '本卦',
+    combinedFromDesc: '为当前之势，',
+    combinedTo: '变卦',
+    combinedToDesc: '为未来之向。'
   },
   en: {
     appName: 'Xu Divination',
@@ -2137,7 +2237,14 @@ var LANG = {
     catHeaven: 'Heaven', catEarth: 'Earth', catWater: 'Water', catMountain: 'Mountain',
     catWind: 'Wind', catThunder: 'Thunder', catFire: 'Fire', catLake: 'Lake',
     dailySeedDesc: 'Date seed',
-    questionSeedDesc: 'Date+Question seed'
+    questionSeedDesc: 'Date+Question seed',
+    changedHexLabel: 'Changed Hexagram',
+    movingLinesLabel: 'Moving Lines',
+    combinedReading: 'Combined Reading',
+    combinedFrom: 'Original',
+    combinedFromDesc: ' represents the current situation. ',
+    combinedTo: 'Changed',
+    combinedToDesc: ' reveals the future trend.'
   },
   ja: {
     appName: '旭決天機',
@@ -2302,7 +2409,14 @@ var LANG = {
     catHeaven: '天', catEarth: '地', catWater: '水', catMountain: '山',
     catWind: '風', catThunder: '雷', catFire: '火', catLake: '沢',
     dailySeedDesc: '日付シード',
-    questionSeedDesc: '日付+質問シード'
+    questionSeedDesc: '日付+質問シード',
+    changedHexLabel: '之卦',
+    movingLinesLabel: '動爻の解析',
+    combinedReading: '三卦合断',
+    combinedFrom: '本卦',
+    combinedFromDesc: 'は現在の状況を示し、',
+    combinedTo: '之卦',
+    combinedToDesc: 'は未来の趨勢を示す。'
   }
 };
 var currentLang = localStorage.getItem('iching_lang') || 'zh';
@@ -2673,6 +2787,61 @@ function getHexagram(rng) {
   return HEXAGRAMS[index];
 }
 
+function generateMovingLines(rng) {
+  var moving = [];
+  for (var i = 0; i < 6; i++) {
+    if (rng() < 0.25) moving.push(i);
+  }
+  if (moving.length === 0) moving.push(Math.floor(rng() * 6));
+  return moving;
+}
+
+function getChangedHexagram(original, movingLines) {
+  var newLines = original.lines.slice();
+  for (var i = 0; i < movingLines.length; i++) {
+    newLines[movingLines[i]] = newLines[movingLines[i]] === 1 ? 0 : 1;
+  }
+  for (var j = 0; j < HEXAGRAMS.length; j++) {
+    var match = true;
+    for (var k = 0; k < 6; k++) {
+      if (HEXAGRAMS[j].lines[k] !== newLines[k]) { match = false; break; }
+    }
+    if (match) return HEXAGRAMS[j];
+  }
+  return original;
+}
+
+function getLineInterpretation(lineIndex, isYang, isMoving) {
+  if (!isMoving) return '';
+  var positions = [
+    { zh: '初爻', en: '1st line (base)', ja: '初爻' },
+    { zh: '二爻', en: '2nd line', ja: '二爻' },
+    { zh: '三爻', en: '3rd line', ja: '三爻' },
+    { zh: '四爻', en: '4th line', ja: '四爻' },
+    { zh: '五爻', en: '5th line', ja: '五爻' },
+    { zh: '上爻', en: '6th line (top)', ja: '上爻' }
+  ];
+  var pos = positions[lineIndex];
+  var type = isYang ? 'yang' : 'yin';
+  var interp = {
+    zh: {
+      yang: ['起步之象，阳气初生，宜谨慎行事', '内卦之中，渐入佳境，宜把握时机', '内卦之极，进退两难，宜守正待时', '外卦之初，承上启下，宜稳中求进', '尊位之爻，核心所在，宜担当作为', '终点之象，物极必反，宜功成身退'],
+      yin: ['起步之阴，力量不足，宜蓄势待发', '柔顺中正，宜配合他人，不宜独断', '阴居阳位，力不从心，宜韬光养晦', '外卦之初，谨慎前行，宜审时度势', '柔居尊位，以柔克刚，宜以德服人', '阴极生变，穷则思变，宜破旧立新']
+    },
+    en: {
+      yang: ['Beginning phase, Yang energy emerging — proceed with caution', 'Inner center, things improving — seize the opportunity', 'Inner peak, dilemma ahead — stay patient', 'Outer beginning, transition phase — advance steadily', 'Position of power, the core issue — take responsibility', 'Peak reached, reversal ahead — know when to retreat'],
+      yin: ['Starting weak, insufficient strength — build your resources', 'Yielding and centered — cooperate, don\'t act alone', 'Yin in Yang position, overwhelmed — keep a low profile', 'Outer beginning, uncertain path — observe carefully', 'Yielding in power position, soft overcoming hard — lead by virtue', 'Yin reaches extreme, change imminent — embrace transformation']
+    },
+    ja: {
+      yang: ['初発の象、陽気初生、慎重に行動すべし', '内卦の中、次第に好転、好機を掴むべし', '内卦の極、進退両難、正を守り時を待つべし', '外卦の初、承上啓下、安定の中に進むべし', '尊位の爻、核心の所在、責任を持つべし', '終点の象、物極必反、功成身退すべし'],
+      yin: ['初発の陰、力不足、蓄勢待発すべし', '柔順中正、他人に協力すべし', '陰居陽位、力不从心、韜光養晦すべし', '外卦の初、慎重前進、審時度勢すべし', '柔居尊位、以柔克剛、徳以服人すべし', '陰極生変、窮則思変、破旧立新すべし']
+    }
+  };
+  var lang = currentLang || 'zh';
+  var texts = interp[lang] || interp.zh;
+  return (texts[type] || texts.yang)[lineIndex] || '';
+}
+
 // ===== State =====
 var currentMode = '';
 var currentResult = null;
@@ -2855,10 +3024,16 @@ function viewHistoryItem(item) {
   var seed = getTodaySeed() + hashString(item.question || 'daily_' + item.date);
   var rng = seededRandom(seed);
   var hexagram = getHexagram(rng);
+  var movingLines = [];
+  var changedHex = null;
+  if (item.mode === 'question') {
+    movingLines = generateMovingLines(rng);
+    changedHex = getChangedHexagram(hexagram, movingLines);
+  }
   var daily = generateDailyExtras(rng);
 
   currentMode = item.mode;
-  currentResult = { hexagram: hexagram, daily: daily, question: item.question };
+  currentResult = { hexagram: hexagram, daily: daily, question: item.question, movingLines: movingLines, changedHex: changedHex };
   previousScreen = 'screen-home';
   showResult(hexagram, daily, item.question, true);
 }
@@ -3053,6 +3228,8 @@ function doDivination() {
   var seed = getTodaySeed() + hashString(question || 'empty');
   var rng = seededRandom(seed);
   var hexagram = getHexagram(rng);
+  var movingLines = generateMovingLines(rng);
+  var changedHex = getChangedHexagram(hexagram, movingLines);
   var daily = generateDailyExtras(rng);
 
   document.getElementById('input-form').style.display = 'none';
@@ -3075,7 +3252,7 @@ function doDivination() {
   }, 2000);
 
   setTimeout(function() {
-    currentResult = { hexagram: hexagram, daily: daily, question: question, seed: seed, seedDesc: t('questionSeedDesc') };
+    currentResult = { hexagram: hexagram, daily: daily, question: question, seed: seed, seedDesc: t('questionSeedDesc'), movingLines: movingLines, changedHex: changedHex };
     saveToHistory(currentResult);
     showResult(hexagram, daily, question, false, seed, t('questionSeedDesc'));
   }, 3000);
@@ -3108,10 +3285,14 @@ function showResult(hexagram, daily, question, isHistory, seed, seedDesc) {
   var randomValue = algoRng();
   var hexIndex = Math.floor(randomValue * 64);
 
+  var movingLines = (currentResult && currentResult.movingLines) ? currentResult.movingLines : [];
+  var changedHex = (currentResult && currentResult.changedHex) ? currentResult.changedHex : null;
+
   var linesHtml = '';
   for (var i = 5; i >= 0; i--) {
     var type = hexagram.lines[i] === 1 ? 'yang' : 'yin';
-    linesHtml += '<div class="hex-line ' + type + '"></div>';
+    var isMoving = movingLines.indexOf(i) !== -1;
+    linesHtml += '<div class="hex-line ' + type + (isMoving ? ' moving' : '') + '">' + (isMoving ? '<span class="moving-indicator">\u25CB</span>' : '') + '</div>';
   }
 
   var questionHtml = question ? '<p class="question-display">"' + escapeHtml(question) + '"</p>' : '';
@@ -3148,6 +3329,74 @@ function showResult(hexagram, daily, question, isHistory, seed, seedDesc) {
     '</div>';
   }
 
+  // Changed hexagram display (question mode only)
+  var changedHexHtml = '';
+  var movingLinesHtml = '';
+  if (changedHex && movingLines.length > 0 && currentMode === 'question') {
+    var changedFortuneText = fortuneDisplay[changedHex.fortune] ? t(fortuneDisplay[changedHex.fortune]) : changedHex.fortune;
+    var changedTrans = HEX_TRANS[currentLang] && HEX_TRANS[currentLang][changedHex.num];
+    var changedInterp = changedTrans ? changedTrans.interpretation : changedHex.interpretation;
+
+    var changedLinesHtml = '';
+    for (var i = 5; i >= 0; i--) {
+      var ctype = changedHex.lines[i] === 1 ? 'yang' : 'yin';
+      changedLinesHtml += '<div class="hex-line ' + ctype + '"></div>';
+    }
+
+    changedHexHtml =
+      '<div class="result-card delay1 changed-hex-card">' +
+        '<div class="changed-hex-header">' +
+          '<span class="changed-hex-arrow">\u2192</span>' +
+          '<span class="changed-hex-label">' + t('changedHexLabel') + '</span>' +
+        '</div>' +
+        '<div class="changed-hex-body">' +
+          '<div class="hexagram-display">' + changedLinesHtml + '</div>' +
+          '<div class="hexagram-name font-serif">' + changedHex.name + '</div>' +
+          '<div class="hexagram-fullname font-serif">' + changedHex.fullName + '</div>' +
+          '<div class="fortune-badge fortune-' + changedHex.fortune + '">' + changedFortuneText + '</div>' +
+        '</div>' +
+      '</div>';
+
+    // Moving lines interpretation
+    var lineInterps = '';
+    for (var j = 0; j < movingLines.length; j++) {
+      var li = movingLines[j];
+      var isYang = hexagram.lines[li] === 1;
+      var interp = getLineInterpretation(li, isYang, true);
+      if (interp) {
+        var linePosNames = {
+          zh: ['\u521D\u7236','\u4E8C\u7236','\u4E09\u7236','\u56DB\u7236','\u4E94\u7236','\u4E0A\u7236'],
+          en: ['1st line','2nd line','3rd line','4th line','5th line','6th line'],
+          ja: ['\u521D\u7236','\u4E8C\u7236','\u4E09\u7236','\u56DB\u7236','\u4E94\u7236','\u4E0A\u7236']
+        };
+        var lang2 = currentLang || 'zh';
+        var posNames = linePosNames[lang2] || linePosNames.zh;
+        lineInterps += '<div class="moving-line-item">' +
+          '<span class="moving-line-pos">' + posNames[li] + (isYang ? ' \u2630\u2192\u2637' : ' \u2637\u2192\u2630') + '</span>' +
+          '<span class="moving-line-text">' + interp + '</span>' +
+        '</div>';
+      }
+    }
+
+    if (lineInterps) {
+      movingLinesHtml =
+        '<div class="result-card delay2">' +
+          '<div class="result-label">' + t('movingLinesLabel') + '</div>' +
+          '<div class="moving-lines-list">' + lineInterps + '</div>' +
+        '</div>';
+    }
+
+    // Combined reading
+    movingLinesHtml +=
+      '<div class="result-card delay3 combined-reading">' +
+        '<div class="result-label">' + t('combinedReading') + '</div>' +
+        '<div class="combined-text">' +
+          '<div class="combined-from">' + t('combinedFrom') + '\u300C' + hexagram.name + '\u300D' + t('combinedFromDesc') + '</div>' +
+          '<div class="combined-to">' + t('combinedTo') + '\u300C' + changedHex.name + '\u300D' + t('combinedToDesc') + '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
   area.innerHTML =
     questionHtml +
     '<div class="result-card" style="position:relative;overflow:hidden;text-align:center">' +
@@ -3158,6 +3407,8 @@ function showResult(hexagram, daily, question, isHistory, seed, seedDesc) {
       signHtml +
       '<div class="fortune-badge fortune-' + hexagram.fortune + '">' + fortuneText + '</div>' +
     '</div>' +
+    changedHexHtml +
+    movingLinesHtml +
     '<div class="result-card delay1">' +
       '<div class="result-section">' +
         '<div class="result-label">' + t('judgmentLabel') + '</div>' +
@@ -3251,8 +3502,9 @@ function shareResult() {
   var hexagram = currentResult.hexagram;
   var fortuneText = fortuneDisplay[hexagram.fortune] ? t(fortuneDisplay[hexagram.fortune]) : hexagram.fortune;
   var text = t('sharePrefix') +
-    hexagram.fullName + ' · ' + fortuneText + '\n' +
+    hexagram.fullName + ' \u00B7 ' + fortuneText + '\n' +
     hexagram.interpretation + '\n' +
+    (currentResult && currentResult.changedHex ? '\n' + t('changedHexLabel') + '\uFF1A' + currentResult.changedHex.fullName : '') +
     t('shareSuffix');
 
   if (navigator.share) {
