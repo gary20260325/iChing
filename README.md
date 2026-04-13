@@ -1,6 +1,6 @@
 <div align="center">
 
-# ☯ 旭决天机 | Xu Divination | 旭決天機
+# ☯ 每日易经 H5 版本 | Daily I Ching H5 | 毎日易経 H5
 
 **以旭日为引，占一日之运**
 
@@ -19,48 +19,53 @@
 
 ## 中文
 
-### 简介
+### 项目简介
 
-**旭决天机**是一款基于《易经》六十四卦的占卜应用，纯前端实现，无需任何后端服务。打开即用，无需安装。
+**每日易经 H5 版本**是一款基于《易经》六十四卦的移动端占卜应用。纯前端单文件实现，零依赖零构建，浏览器直接打开即可使用。
 
-### 功能特色
+应用内含四大核心模块——今日一签、问事占卜、缘分合盘、电子木鱼，并提供亮色/暗色双主题与中英日三语切换，适合在微信、浏览器等 H5 环境中直接运行。
 
-| 模块 | 说明 |
+### 功能模块
+
+| 模块 | 功能说明 |
+|------|---------|
+| 🃏 **今日一签** | 基于当日日期生成固定卦象，全屏翻牌交互配合金色光效特效，每日一卦洞察先机 |
+| 🔮 **问事占卜** | 输入心中所问，支持快捷话题标签（事业/感情/财运/学业/健康），含动爻与变卦的三卦合断体系 |
+| 💫 **缘分合盘** | 输入双方姓名与生日，从性格、情感、事业、价值观四维评估缘分指数，共 8 个缘分等级 |
+| 🪵 **电子木鱼** | 精细 SVG 木鱼图形，Web Audio API 合成敲击音效，支持自动敲击与三档速度调节 |
+
+### 设计特色
+
+- **双主题切换**：素纸朱砂（暖色亮色主题）/ 耿夜旭黑（金色暗色主题），CSS 变量驱动，过渡动画平滑
+- **三语国际化**：中文 / English / 日本語 一键切换，覆盖全部 UI 文案、64 卦解读、每日宜忌及合盘数据
+- **翻牌特效**：全屏纯黑背景 + 金色径向光晕扩散 + 双层光环涟漪 + 30 粒子飞散 + 屏幕闪光
+- **太极八卦图标**：SVG 绘制阴阳鱼与八卦卦符，持续旋转动画
+- **算法透明**：占卜结果可展开查看完整推演过程（7 步），合盘可查看 4 步缘分算法
+- **动爻变卦**：问事占卜支持动爻判定与变卦推演，提供逐爻解读与三卦合断
+- **背景粒子**：亮色模式花瓣飘落、暗色模式光点上浮，页面不可见时自动暂停节省性能
+
+### 技术实现
+
+| 特性 | 说明 |
 |------|------|
-| 🃏 **今日一签** | 每日一卦，全屏翻牌交互，金色光效特效 |
-| 🔮 **问事占卜** | 心有所疑，卦有所答，支持快捷话题标签 |
-| 💫 **缘分合盘** | 双人缘分测算，四维评估（性格/感情/事业/价值观） |
-| 🪵 **电子木鱼** | 敲木鱼积功德，支持自动敲击与多档速度 |
-
-### 更多亮点
-
-- **双主题**：素纸朱砂（亮色） / 耿夜旭黑（暗色）
-- **三语支持**：中文 / English / 日本語，一键切换
-- **算法透明**：起卦过程完全公开，7步推演一目了然
-- **翻牌特效**：全屏黑底 + 金色光晕扩散 + 粒子飞散 + 光环涟漪
-- **历史记录**：自动保存最近10条，可随时查看或清空
-- **分享功能**：支持原生分享，一键复制结果
-- **响应式设计**：适配手机、平板、桌面
-- **尊重偏好**：支持 `prefers-reduced-motion` 无障碍设置
-
-### 技术特点
-
-- 📄 **单文件架构**：全部代码在一个 HTML 文件中
-- 🚫 **零依赖**：无需 npm/webpack，直接打开即用
-- 🔒 **纯本地计算**：无需网络请求，所有数据在浏览器端生成
-- 💾 **localStorage 持久化**：主题、语言、历史、功德数据自动保存
-- 🎵 **Web Audio API**：木鱼音效完全由代码合成，无需音频文件
-- 🛡️ **XSS 防护**：用户输入严格转义
+| 单文件架构 | 全部 HTML / CSS / JS 集中在一个文件，便于分发和部署 |
+| 零外部依赖 | 仅引用 Google Fonts（Noto Serif SC），无需 npm 或构建工具 |
+| 纯本地计算 | 种子化伪随机数生成器，同日同问结果一致，无需服务端 |
+| 数据持久化 | localStorage 保存主题、语言、占卜历史（最近 10 条）、功德计数 |
+| 音效合成 | Web Audio API 实时合成木鱼敲击音效，无需音频文件 |
+| 安全防护 | 用户输入严格 HTML 转义，防止 XSS 注入 |
+| 响应式适配 | 5 个断点覆盖超小屏手机到桌面端，触控优化 |
+| 无障碍 | 支持 `prefers-reduced-motion`，尊重用户动画偏好 |
 
 ### 快速开始
 
 ```bash
-# 直接用浏览器打开
+# 方式一：浏览器直接打开
 open iChing.html
 
-# 或使用本地服务器
+# 方式二：本地服务器
 python3 -m http.server 8080
-# 然后访问 http://localhost:8080/iChing.html
+# 访问 http://localhost:8080/iChing.html
 ```
 
 ### 致敬
@@ -73,48 +78,53 @@ python3 -m http.server 8080
 
 ## English
 
-### Introduction
+### About
 
-**Xu Divination** is an I Ching (Book of Changes) divination app built entirely with frontend technologies. No backend, no installation — just open and use.
+**Daily I Ching H5** is a mobile-first divination app based on the 64 hexagrams of the I Ching (Book of Changes). Built as a single HTML file with zero dependencies — just open it in any browser and start.
 
-### Features
+It features four core modules: Daily Fortune, Ask the Oracle, Destiny Match, and Wooden Fish, with dual themes and trilingual support (Chinese, English, Japanese).
+
+### Modules
 
 | Module | Description |
 |--------|-------------|
-| 🃏 **Daily Fortune** | One hexagram per day with a dramatic card-flip reveal & golden light effects |
-| 🔮 **Ask the Oracle** | Ask any question, receive guidance from the 64 hexagrams |
-| 💫 **Destiny Match** | Compatibility analysis with 4 dimensions (Personality, Emotion, Career, Values) |
-| 🪵 **Wooden Fish** | Knock the wooden fish to accumulate merit, with auto-knock & speed control |
+| 🃏 **Daily Fortune** | One hexagram per day, seeded by date. Full-screen card flip with golden light explosion effects |
+| 🔮 **Ask the Oracle** | Ask any question with quick topic tags. Features moving lines & changed hexagram for deeper readings |
+| 💫 **Destiny Match** | Enter two people's names & birthdays for a 4-dimension compatibility analysis (Personality, Emotion, Career, Values) |
+| 🪵 **Wooden Fish** | Detailed SVG wooden fish with synthesized knock sound via Web Audio API. Auto-knock with 3 speed levels |
 
-### Highlights
+### Design
 
-- **Dual Themes**: Light (Vermillion & Paper) / Dark (Gold & Night)
-- **Trilingual**: 中文 / English / 日本語 — switch with one tap
-- **Transparent Algorithm**: Full 7-step divination process openly displayed
-- **Card Flip FX**: Full-screen golden light explosion, particle scatter, ring ripples
-- **History**: Auto-saves last 10 readings, viewable & clearable
-- **Share**: Native Web Share API with clipboard fallback
-- **Responsive**: Adapts to phones, tablets, and desktops
-- **Accessibility**: Respects `prefers-reduced-motion`
+- **Dual Themes**: Light (Vermillion & Paper) / Dark (Gold & Night), driven by CSS variables with smooth transitions
+- **Trilingual**: 中文 / English / 日本語 — one-tap switch covering all UI text, 64 hexagram readings, and match data
+- **Card Flip FX**: Full-screen black background + golden radial glow + dual ring ripples + 30 particle scatter + screen flash
+- **Taiji Icon**: SVG yin-yang with 8 trigrams, continuously rotating
+- **Transparent Algorithm**: Expandable 7-step divination process and 4-step match algorithm
+- **Moving Lines**: Question mode supports moving line detection, changed hexagram, and combined three-hexagram reading
+- **Ambient Particles**: Falling petals (light) / rising light dots (dark), auto-paused when page is hidden
 
 ### Technical Details
 
-- 📄 **Single File**: Everything in one HTML file
-- 🚫 **Zero Dependencies**: No build tools, no npm — just open in browser
-- 🔒 **100% Local**: All computation happens in-browser, no server needed
-- 💾 **Persistent**: Theme, language, history & merit saved via localStorage
-- 🎵 **Synthesized Audio**: Wooden fish sound generated via Web Audio API
-- 🛡️ **XSS Protected**: All user input properly escaped
+| Feature | Detail |
+|---------|--------|
+| Single File | All HTML / CSS / JS in one file for easy distribution |
+| Zero Dependencies | Only Google Fonts (Noto Serif SC), no npm or build tools required |
+| 100% Local | Seeded PRNG ensures reproducible results, no server needed |
+| Persistent | Theme, language, history (last 10), and merit count saved via localStorage |
+| Synthesized Audio | Wooden fish knock sound generated via Web Audio API, no audio files |
+| XSS Protected | All user input properly HTML-escaped |
+| Responsive | 5 breakpoints from small phones to desktops, touch-optimized |
+| Accessible | Respects `prefers-reduced-motion` |
 
 ### Quick Start
 
 ```bash
-# Open directly in browser
+# Option 1: Open directly
 open iChing.html
 
-# Or use a local server
+# Option 2: Local server
 python3 -m http.server 8080
-# Then visit http://localhost:8080/iChing.html
+# Visit http://localhost:8080/iChing.html
 ```
 
 ### Credits
@@ -127,38 +137,43 @@ python3 -m http.server 8080
 
 ## 日本語
 
-### 紹介
+### プロジェクトについて
 
-**旭決天機**は『易経』の六十四卦に基づく占いアプリです。フロントエンドのみで実装されており、バックエンド不要。開くだけですぐ使えます。
+**毎日易経 H5 バージョン**は、『易経』の六十四卦に基づくモバイル占いアプリです。シングルHTMLファイルで実装され、依存関係ゼロ。ブラウザで開くだけですぐ使えます。
 
-### 機能一覧
+今日の運勢、占い、縁結び、木魚の4つのコアモジュールを搭載し、ライト/ダーク二つのテーマと中日英三ヶ国語に対応しています。
+
+### 機能モジュール
 
 | モジュール | 説明 |
 |-----------|------|
-| 🃏 **今日の運勢** | 毎日一卦、カードフリップ演出と金色の光エフェクト |
-| 🔮 **占い** | 心の中の疑問に六十四卦が答える |
-| 💫 **縁結び** | 二人の相性を四次元（性格・感情・事業・価値観）で分析 |
-| 🪵 **木魚** | 木魚を叩いて功徳を積む、自動叩き・速度調整対応 |
+| 🃏 **今日の運勢** | 日付をシードとした毎日一卦。フルスクリーンカードフリップと金色光エフェクト |
+| 🔮 **占い** | 心の中の疑問を入力、クイックタグ対応。動爻と之卦による三卦合断システム |
+| 💫 **縁結び** | 二人の名前と生年月日を入力、四次元（性格・感情・事業・価値観）で相性分析 |
+| 🪵 **木魚** | 精細なSVG木魚、Web Audio APIで敲击音を合成。自動叩き・3段階速度調整 |
 
-### 特徴
+### デザイン
 
-- **ダブルテーマ**: 素紙朱砂（ライト） / 耿夜旭黒（ダーク）
-- **三ヶ国語対応**: 中文 / English / 日本語 — ワンタップ切替
-- **アルゴリズム公開**: 7ステップの占いプロセスを完全公開
-- **カードフリップ演出**: フルスクリーン金色光エフェクト・パーティクル・リング波紋
-- **履歴機能**: 直近10件を自動保存、閲覧・クリア可能
-- **共有機能**: Web Share API対応、クリップボードコピー
-- **レスポンシブ**: スマホ・タブレット・デスクトップに対応
-- **アクセシビリティ**: `prefers-reduced-motion` に対応
+- **ダブルテーマ**: 素紙朱砂（ライト）/ 耿夜旭黒（ダーク）、CSS変数駆動、スムーズな切り替え
+- **三ヶ国語対応**: 中文 / English / 日本語 — ワンタップ切替、全UI文・64卦解説・縁結びデータ対応
+- **カードフリップ演出**: フルスクリーン黒背景 + 金色放射光 + ダブルリング波紋 + 30パーティクル散乱
+- **太極八卦アイコン**: SVG陰陽魚と八卦卦符、回転アニメーション
+- **アルゴリズム公開**: 展開可能な7ステップ占いプロセスと4ステップ縁結びアルゴリズム
+- **動爻・之卦**: 占いモードで動爻検出と之卦推演、逐爻解説と三卦合断を提供
+- **環境パーティクル**: ライトモードは花びら落下、ダークモードは光点上昇、非表示時は自動一時停止
 
 ### 技術仕様
 
-- 📄 **シングルファイル**: 全コードが一つのHTMLファイルに
-- 🚫 **ゼロ依存**: npm/webpack不要、ブラウザで開くだけ
-- 🔒 **完全ローカル**: 全ての計算はブラウザ内で完結
-- 💾 **永続化**: テーマ・言語・履歴・功徳をlocalStorageに保存
-- 🎵 **Web Audio API**: 木魚の音をコードで合成、音声ファイル不要
-- 🛡️ **XSS対策**: ユーザー入力をエスケープ処理
+| 特性 | 説明 |
+|------|------|
+| シングルファイル | 全HTML/CSS/JSを一ファイルに集約、配布・デプロイが容易 |
+| ゼロ依存 | Google Fonts（Noto Serif SC）のみ参照、npm/ビルドツール不要 |
+| 完全ローカル | シード化疑似乱数生成器で再現可能な結果、サーバー不要 |
+| 永続化 | テーマ・言語・履歴（直近10件）・功徳をlocalStorageに保存 |
+| 音声合成 | Web Audio APIで木魚の敲击音をリアルタイム合成、音声ファイル不要 |
+| XSS対策 | ユーザー入力をHTMLエスケープ処理 |
+| レスポンシブ | 5つのブレークポイントで小画面スマホからデスクトップまで対応 |
+| アクセシビリティ | `prefers-reduced-motion` に対応 |
 
 ### クイックスタート
 
@@ -166,7 +181,7 @@ python3 -m http.server 8080
 # ブラウザで直接開く
 open iChing.html
 
-# またはローカルサーバーを使用
+# ローカルサーバーを使用
 python3 -m http.server 8080
 # http://localhost:8080/iChing.html にアクセス
 ```
